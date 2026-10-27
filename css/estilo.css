@@ -1,0 +1,364 @@
+/* ==========================================================
+   Teste de Perfil Comportamental — FRONT-END (não altere a lógica PHP aqui)
+   Perfis: aguia | gato | lobo | tubarao
+   ========================================================== */
+:root {
+  --tinta: #152238;
+  --papel: #F1F4F8;
+  --cartao: #FFFFFF;
+  --linha: #D5DCE6;
+  --suave: #5B6980;
+  --aguia: #2F6FED;
+  --gato: #E0308C;
+  --lobo: #1F7A5C;
+  --tubarao: #D93A2B;
+  --raio: 14px;
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font: 17px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  margin: 0 0 .5em
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: 62ch
+}
+
+a {
+  color: inherit
+}
+
+.container {
+  width: min(760px, 100% - 2rem);
+  margin: 0 auto;
+  padding: 2rem 0 4rem
+}
+
+:focus-visible {
+  outline: 3px solid var(--tinta);
+  outline-offset: 3px
+}
+
+/* Cores por perfil (use a classe no elemento: class="aguia") */
+.aguia {
+  --cor: var(--aguia)
+}
+
+.gato {
+  --cor: var(--gato)
+}
+
+.lobo {
+  --cor: var(--lobo)
+}
+
+.tubarao {
+  --cor: var(--tubarao)
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 10px;
+  background: var(--tinta);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  padding: .85rem 1.6rem;
+  cursor: pointer;
+  text-decoration: none
+}
+
+.btn:hover {
+  background: #26375a
+}
+
+.btn.secundario {
+  background: transparent;
+  color: var(--tinta);
+  border: 2px solid var(--tinta)
+}
+
+/* ---------- Página inicial ---------- */
+.capa {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 170px;
+  border-radius: var(--raio);
+  overflow: hidden;
+  margin-bottom: 1.75rem
+}
+
+.capa div {
+  background: var(--cor);
+  display: flex;
+  align-items: flex-end;
+  padding: .7rem 1rem;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.15rem
+}
+
+.titulo-pagina {
+  font-size: clamp(1.9rem, 5vw, 2.8rem)
+}
+
+.painel {
+  background: var(--cartao);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 1.5rem
+}
+
+label.campo {
+  display: block;
+  font-weight: 700;
+  margin-bottom: .4rem
+}
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  font: inherit;
+  padding: .8rem 1rem;
+  border: 2px solid var(--linha);
+  border-radius: 10px;
+  margin-bottom: 1.1rem
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+  border-color: var(--tinta);
+  outline: 0
+}
+
+.perfis-lista {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: .6rem
+}
+
+.perfis-lista li {
+  border-left: 6px solid var(--cor);
+  padding: .1rem 0 .1rem .9rem
+}
+
+/* ---------- Mensagens de erro (validação feita pelo PHP) ---------- */
+.alerta {
+  background: #FDECEA;
+  border: 2px solid var(--tubarao);
+  border-radius: 10px;
+  padding: .9rem 1.1rem;
+  margin-bottom: 1.25rem
+}
+
+.alerta strong {
+  display: block
+}
+
+.pergunta.sem-resposta {
+  border-color: var(--tubarao);
+  box-shadow: 0 0 0 3px #d93a2b33
+}
+
+/* ---------- Teste ---------- */
+.topo-progresso {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--papel);
+  padding: .8rem 0;
+  border-bottom: 1px solid var(--linha)
+}
+
+.topo-progresso .texto {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: .95rem;
+  margin-bottom: .4rem
+}
+
+.barra {
+  height: 10px;
+  background: var(--linha);
+  border-radius: 99px;
+  overflow: hidden
+}
+
+.barra span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--tinta);
+  transition: width .25s
+}
+
+.pergunta {
+  background: var(--cartao);
+  border: 2px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 1.4rem;
+  margin: 1.25rem 0
+}
+
+.pergunta h2 {
+  font-size: 1.2rem
+}
+
+.pergunta .numero {
+  color: var(--suave);
+  font-weight: 700;
+  font-size: .95rem;
+  display: block;
+  margin-bottom: .3rem
+}
+
+.opcao {
+  display: block;
+  position: relative;
+  margin-top: .6rem
+}
+
+.opcao input {
+  position: absolute;
+  opacity: 0
+}
+
+.opcao span {
+  display: block;
+  padding: .8rem 1rem;
+  border: 2px solid var(--linha);
+  border-radius: 10px;
+  cursor: pointer
+}
+
+.opcao span:hover {
+  border-color: var(--suave)
+}
+
+.opcao input:checked+span {
+  border-color: var(--tinta);
+  background: var(--tinta);
+  color: #fff;
+  font-weight: 600
+}
+
+.opcao input:focus-visible+span {
+  outline: 3px solid var(--tinta);
+  outline-offset: 3px
+}
+
+.acoes {
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem
+}
+
+/* ---------- Resultado ---------- */
+.destaque {
+  background: var(--cor);
+  color: #fff;
+  border-radius: var(--raio);
+  padding: 2rem 1.6rem;
+  margin: 1.25rem 0
+}
+
+.destaque .pequeno {
+  opacity: .9;
+  font-weight: 600
+}
+
+.destaque h1 {
+  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  margin: .2rem 0 .3rem
+}
+
+.destaque p {
+  margin-bottom: 0
+}
+
+.destaque.empate {
+  background: var(--tinta)
+}
+
+.placar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem
+}
+
+.placar .linha {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-bottom: .3rem
+}
+
+.placar .trilho {
+  height: 16px;
+  background: var(--linha);
+  border-radius: 99px;
+  overflow: hidden
+}
+
+.placar .trilho span {
+  display: block;
+  height: 100%;
+  background: var(--cor);
+  border-radius: 99px
+}
+
+.descricao {
+  margin-top: 1.25rem;
+  border-left: 6px solid var(--cor);
+  padding-left: 1rem
+}
+
+@media (max-width:520px) {
+  .container {
+    padding-top: 1rem
+  }
+
+  .capa {
+    height: 140px
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .barra span {
+    transition: none
+  }
+}
+
+@media print {
+
+  .acoes,
+  .topo-progresso {
+    display: none
+  }
+
+  body {
+    background: #fff
+  }
+}
