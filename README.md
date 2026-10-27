@@ -49,10 +49,6 @@ teste-comportamental/
 Antes de executar o projeto, crie a estrutura do banco de dados no seu **phpMyAdmin** executando o script SQL abaixo:
 
 ```sql
-CREATE DATABASE IF NOT EXISTS teste_comportamental CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-USE teste_comportamental;
-
 CREATE TABLE IF NOT EXISTS usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL UNIQUE,
@@ -69,7 +65,7 @@ CREATE TABLE IF NOT EXISTS resultados (
     tubarao INT NOT NULL DEFAULT 0,
     data_teste TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+)
 ```
 
 ---
@@ -86,8 +82,8 @@ CREATE TABLE IF NOT EXISTS resultados (
    ```php
    $host = 'localhost';
    $db   = 'teste_comportamental';
-   $user = 'root';
-   $pass = '';
+   $usuario = 'root';
+   $senha = '';
    ```
 5. Acesse no seu navegador:
    ```text
